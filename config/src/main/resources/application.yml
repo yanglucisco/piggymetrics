@@ -8,7 +8,7 @@ spring:
      active: native
   security:
     user:
-      password: ${CONFIG_SERVICE_PASSWORD}
+      password: Htht123.com
 
 server:
   port: 8888
