@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
  * @description desc
  * @date 2025/8/25 16:43
  **/
-//@Configuration
+@Configuration
 public class MyConfig {
-//    @Value("${spring.security.user.password:#{null}}")
+    @Value("${spring.security.user.password:#{null}}")
     private String host;
     public String getHost(){
         return host;

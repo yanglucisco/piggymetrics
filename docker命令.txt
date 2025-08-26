@@ -1,0 +1,5 @@
+docker tag  swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/rabbitmq:3.7-rc-management rabbitmq:3.7
+docker pull swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/rabbitmq:3.7-rc-management
+
+docker pull swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/mongo:3.2.16
+docker tag  swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/mongo:3.2.16  docker.io/library/mongo:3.2.16

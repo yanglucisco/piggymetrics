@@ -1,0 +1,4 @@
+docker run -d -v G:\study\piggymetrics\mongodb\dump\:/data/configdb -p 27017:27017 --name mongo-piggymetrics mongo:3.2.16 -f /data/configdb/mongod.conf
+db.createUser({user: "admin",pwd: "adminpwd",roles: [{ role: "root", db: "admin" }]})
+db.createUser({user: "user",pwd: "userpwd",roles: [{ role: "readWrite", db: "piggymetrics" }]})
+docker cp G:\study\piggymetrics\mongodb\dump\account-service-dump1.js mongo-piggymetrics:/root/

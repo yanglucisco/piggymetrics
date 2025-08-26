@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 public class MyController {
-//    @Autowired
-//    MyConfig myConfig;
+    @Autowired
+    MyConfig myConfig;
     @GetMapping("test")
     public String test(){
-        return "config-test   ";
+        return "config-test   " + myConfig.getHost();
     }
 }
