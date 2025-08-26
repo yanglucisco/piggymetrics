@@ -1,4 +1,22 @@
+1、下载mongo镜像
+docker pull swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/mongo:3.2.16
+docker tag  swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/mongo:3.2.16 mongo:3.2.16
+
+2、G:\study\piggymetrics\mongodb\dump\目录下存放mongod.conf文件
+
+3、启动mongo容器
 docker run -d -v G:\study\piggymetrics\mongodb\dump\:/data/configdb -p 27017:27017 --name mongo-piggymetrics mongo:3.2.16 -f /data/configdb/mongod.conf
-db.createUser({user: "admin",pwd: "adminpwd",roles: [{ role: "root", db: "admin" }]})
-db.createUser({user: "user",pwd: "userpwd",roles: [{ role: "readWrite", db: "piggymetrics" }]})
+
+4、启用mongo鉴权
 docker cp G:\study\piggymetrics\mongodb\dump\account-service-dump1.js mongo-piggymetrics:/root/
+docker exec -it mongo-piggymetrics /bin/bash
+mongo
+use admin
+db.createUser({user: "admin",pwd: "adminpwd",roles: [{ role: "root", db: "admin" }]})
+use piggymetrics
+db.createUser({user: "user",pwd: "userpwd",roles: [{ role: "readWrite", db: "piggymetrics" }]})
+load('/root/account-service-dump1.js')
+db.accounts.find() //查看数据是否导入成功
+
+5、重启mongo-piggymetrics,使鉴权生效
+docker restart mongo-piggymetrics
